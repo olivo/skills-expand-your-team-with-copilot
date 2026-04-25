@@ -615,7 +615,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } else {
       try {
-        await navigator.clipboard.writeText(url);
+        await navigator.clipboard.writeText(`${text}\n${url}`);
         showMessage("Link copied to clipboard!", "success");
       } catch (error) {
         console.error("Clipboard copy failed:", error);
