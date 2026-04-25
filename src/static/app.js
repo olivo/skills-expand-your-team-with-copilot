@@ -1,4 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Dark mode toggle
+  const themeToggle = document.getElementById("theme-toggle");
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+    themeToggle.textContent = "☀️ Light Mode";
+    themeToggle.setAttribute("aria-label", "Switch to light mode");
+  }
+  themeToggle.addEventListener("click", () => {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    if (isDark) {
+      document.documentElement.removeAttribute("data-theme");
+      themeToggle.textContent = "🌙 Dark Mode";
+      themeToggle.setAttribute("aria-label", "Switch to dark mode");
+      localStorage.setItem("theme", "light");
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
+      themeToggle.textContent = "☀️ Light Mode";
+      themeToggle.setAttribute("aria-label", "Switch to light mode");
+      localStorage.setItem("theme", "dark");
+    }
+  });
+
   // DOM elements
   const activitiesList = document.getElementById("activities-list");
   const messageDiv = document.getElementById("message");
